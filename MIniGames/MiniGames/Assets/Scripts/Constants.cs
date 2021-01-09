@@ -14,7 +14,8 @@ namespace Base
                 {1, "FourInARow"},
                 {2, "TicTakToe"},
                 {3, "UnlockPuzzle"},
-                {4, "RollerSplat"}
+                {4, "RollerSplat"},
+                {5, "RapidRoll"}
 
             };
 
