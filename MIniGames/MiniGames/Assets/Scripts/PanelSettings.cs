@@ -3,6 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using DG.Tweening;
 
 public class PanelSettings : MonoBehaviour
 {
@@ -12,7 +13,7 @@ public class PanelSettings : MonoBehaviour
     [SerializeField] Toggle toggleVibration;
 
     [SerializeField] GameObject panelSetting;
-
+    [SerializeField] RectTransform settingsBG;
 
     private void Start()
     {
@@ -20,6 +21,9 @@ public class PanelSettings : MonoBehaviour
         btnSetting.onClick.AddListener(() =>
         {
             panelSetting.gameObject.SetActive(true);
+            settingsBG.localScale = Vector2.one * .5f;
+            settingsBG.DOScale(Vector3.one, .5f).SetEase(Ease.OutBounce);
+
             toggleSound.isOn = AppDelegate.SharedManager().GetSoundStatus();
             toggleVibration.isOn = AppDelegate.SharedManager().GetVibrationStatus();
 
