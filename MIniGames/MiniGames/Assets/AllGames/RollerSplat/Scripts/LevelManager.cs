@@ -4,19 +4,19 @@ using UnityEngine;
 
 public class LevelManager : MonoBehaviour
 {
-    [SerializeField] private GameObject[] levelPrefabs;
+    [SerializeField] private LevelPrefabs levelPrefabs;
 
     void Start()
     {
         if (PlayerPrefs.GetInt("level") >= 99)
         {
             int levelIndex = Random.Range(5, 100);
-            Instantiate(levelPrefabs[levelIndex]);
+            Instantiate(levelPrefabs.levelPrefabs[levelIndex]);
         }
         else
         {
             int level = PlayerPrefs.GetInt("level");
-            GameObject newLevel = Instantiate(levelPrefabs[level]);
+            GameObject newLevel = Instantiate(levelPrefabs.levelPrefabs[level]);
             //newLevel.AddComponent<MeshCombine>();
         }
     }
