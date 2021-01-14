@@ -34,14 +34,14 @@ public class GameOverButtons : MonoBehaviour
 
     private void HomeCallback()
     {
-        GoogleAdManager.Instance.ShowInterestitialAD();
+        if (GoogleAdManager.Instance != null) GoogleAdManager.Instance.ShowInterestitialAD();
         SceneManager.LoadScene(0);
         Destroy(this.gameObject);
     }
 
     private void PlayAgainCallback()
     {
-        GoogleAdManager.Instance.ShowInterestitialAD();
+        if (GoogleAdManager.Instance != null) GoogleAdManager.Instance.ShowInterestitialAD();
         UiManager.Instance.InvokeAction(1);
         Destroy(this.gameObject);
     }
