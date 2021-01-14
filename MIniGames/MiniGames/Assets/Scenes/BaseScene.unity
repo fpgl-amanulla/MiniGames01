@@ -750,7 +750,7 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Sprite
       value: 
-      objectReference: {fileID: 21300000, guid: 767062b92ad855345b6ce21d3da9ea96,
+      objectReference: {fileID: 21300000, guid: 38e282399b3c240b09ce5f74530156b4,
         type: 3}
     - target: {fileID: 4622684574768507728, guid: c77e6c6ec147e48b3a5db8fed7584f69,
         type: 3}
@@ -994,7 +994,7 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Sprite
       value: 
-      objectReference: {fileID: 21300000, guid: 7336f55a463398b4fb7c460fe656e1ba,
+      objectReference: {fileID: 21300000, guid: 6fca73dee06664ce8838401cb3869e91,
         type: 3}
     - target: {fileID: 4622684574768507728, guid: c77e6c6ec147e48b3a5db8fed7584f69,
         type: 3}
@@ -1567,6 +1567,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ee32a2492eeaa4518a4fe767b6697c3c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  userEarnedReward1: 0
 --- !u!4 &2104012279
 Transform:
   m_ObjectHideFlags: 0
