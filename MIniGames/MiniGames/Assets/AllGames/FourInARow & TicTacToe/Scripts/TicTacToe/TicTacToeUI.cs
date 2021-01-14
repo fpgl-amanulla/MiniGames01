@@ -43,10 +43,7 @@ public class TicTacToeUI : MonoBehaviour
     {
         AudioManager.Instance.PlaySFX(AudioManager.audios.btnClick);
 
-        if (SceneLoader.Instance != null)
-            SceneLoader.Instance.LoadScene("TicTakToe");
-        else
-            SceneManager.LoadScene("TicTakToe");
+        SceneManager.LoadScene("TicTakToe");
 
     }
     public void PlayAgainCallBack()
