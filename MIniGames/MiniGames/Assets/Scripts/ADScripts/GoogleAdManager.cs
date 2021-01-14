@@ -3,16 +3,17 @@ using System.Collections.Generic;
 using UnityEngine;
 using GoogleMobileAds.Api;
 using System;
+using UnityEngine.Events;
 
 public class GoogleAdManager : MonoBehaviour
 {
 
     public static GoogleAdManager _instance;
-    string rewardedadUnitId1;
     private RewardedAd rewardedAd1;
     public bool userEarnedReward1 = false;
     private InterstitialAd interstitial;
 
+    private UnityAction<bool> adViewCallBack;
 
     public static GoogleAdManager Instance
     {
@@ -86,6 +87,19 @@ public class GoogleAdManager : MonoBehaviour
     }
 
 
+    public void ShowRewaredAD(UnityAction<bool> _adViewCallBack = null)
+    {
+        adViewCallBack = _adViewCallBack;
+        if(this.rewardedAd1.IsLoaded())
+        {
+            this.rewardedAd1.Show();
+        }
+        else
+        {
+            CreateAndLoadRewardedAd1();
+        }
+    }
+
 
 
 
@@ -93,7 +107,7 @@ public class GoogleAdManager : MonoBehaviour
     {
         //key reward
 #if UNITY_ANDROID
-        string rewardedadUnitId1 = "ca-app-pub-3940256099942544/1033173712"; //Test AD
+        string rewardedadUnitId1 = "ca-app-pub-3940256099942544/5224354917"; //Test AD
 #elif UNITY_IPHONE
         string rewardedadUnitId1 = "ca-app-pub-3940256099942544/4411468910";
 #else
@@ -149,8 +163,11 @@ public class GoogleAdManager : MonoBehaviour
         MonoBehaviour.print("HandleRewardedAdClosed event received");
         if (userEarnedReward1 == true)
         {
-            StopAllCoroutines();
-            //SceneManager.LoadScene(SceneManager.GetActiveScene().name);
+            adViewCallBack?.Invoke(true);
+        }
+        else
+        {
+            adViewCallBack?.Invoke(false);
         }
 
         this.CreateAndLoadRewardedAd1();
@@ -160,18 +177,6 @@ public class GoogleAdManager : MonoBehaviour
     public void HandleUserEarnedReward1(object sender, Reward args)
     {
         userEarnedReward1 = true;
-    }
-
-    public void UserChoseToWatchAd1()
-    {
-        if (this.rewardedAd1.IsLoaded())
-        {
-            this.rewardedAd1.Show();
-        }
-        else
-        {
-            CreateAndLoadRewardedAd1();
-        }
     }
 
 }

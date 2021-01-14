@@ -1,4 +1,5 @@
-﻿using UnityEngine;
+﻿using System;
+using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 
@@ -16,6 +17,7 @@ public class FailedPanel : MonoBehaviour
     private void Btn_TryAgainCallBack()
     {
         Debug.Log("Restart Game");
+
         if (GoogleAdManager.Instance != null) GoogleAdManager.Instance.ShowInterestitialAD();
         SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
 
@@ -23,9 +25,20 @@ public class FailedPanel : MonoBehaviour
 
     private void Btn_AddPlayCallBack()
     {
-        MainGameContoller.Instance.CountNumer += 1;
-        MainGameContoller.Instance.ShoowRemainingAttempts();
-        this.gameObject.SetActive(false);
-        Debug.Log("Play Add");
+        if (GoogleAdManager.Instance != null)
+        {
+            GoogleAdManager.Instance.ShowRewaredAD(_adViewCallBack);
+        }
+    }
+
+    private void _adViewCallBack(bool success)
+    {
+        if (success)
+        {
+            MainGameContoller.Instance.CountNumer += 1;
+            MainGameContoller.Instance.ShoowRemainingAttempts();
+            this.gameObject.SetActive(false);
+            Debug.Log("Play Add");
+        }
     }
 }
