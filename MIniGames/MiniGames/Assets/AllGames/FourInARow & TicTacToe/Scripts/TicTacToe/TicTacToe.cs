@@ -72,7 +72,7 @@ public class TicTacToe : MonoBehaviour
 
     public void ResetGame()
     {
-        difficulty = Random.Range(5, 11);
+        difficulty = Random.Range(2, 11);
 
         for (int i = 0; i < length; i++)
         {

@@ -20,6 +20,10 @@ public class GameManager : MonoBehaviour
 
     public void GameOver()
     {
+        if (AppDelegate.SharedManager().GetVibrationStatus())
+        {
+            Handheld.Vibrate();
+        }
         isGameOver = true;
     }
 }

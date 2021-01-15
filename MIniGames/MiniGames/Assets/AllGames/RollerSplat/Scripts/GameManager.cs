@@ -111,7 +111,7 @@ namespace RS
         IEnumerator Wait()
         {
             yield return new WaitForSeconds(.50f);
-            //AdManager.instance.ShowVideoAd();
+            if(GoogleAdManager.Instance!=null) GoogleAdManager.Instance.ShowInterestitialAD();
         }
 
         IEnumerator NextLevel()

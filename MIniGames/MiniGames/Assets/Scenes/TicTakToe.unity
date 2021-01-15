@@ -631,10 +631,25 @@ PrefabInstance:
       propertyPath: m_SizeDelta.y
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 4575179959497955034, guid: e3e70fb5ced6ea84497122df32c221ae,
+    - target: {fileID: 4884418102406844199, guid: e3e70fb5ced6ea84497122df32c221ae,
         type: 3}
-      propertyPath: m_IsActive
-      value: 1
+      propertyPath: m_fontColor.r
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4884418102406844199, guid: e3e70fb5ced6ea84497122df32c221ae,
+        type: 3}
+      propertyPath: m_fontColor.g
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4884418102406844199, guid: e3e70fb5ced6ea84497122df32c221ae,
+        type: 3}
+      propertyPath: m_fontColor.b
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4884418102406844199, guid: e3e70fb5ced6ea84497122df32c221ae,
+        type: 3}
+      propertyPath: m_fontColor32.rgba
+      value: 4278190080
       objectReference: {fileID: 0}
     - target: {fileID: 5033436341040132590, guid: e3e70fb5ced6ea84497122df32c221ae,
         type: 3}

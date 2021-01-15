@@ -64,7 +64,7 @@ namespace FIAR
             }
             else
             {
-                txtWhoseTurn.color = Color.green;
+                txtWhoseTurn.color = Color.black;
                 txtWhoseTurn.text = "AI's turn.Plz wait...";
             }
         }

@@ -31,6 +31,7 @@ namespace RapidRoll
         }
         public void PlayAgain()
         {
+            if (GoogleAdManager.Instance != null) GoogleAdManager.Instance.ShowInterestitialAD();
             UIManager.Instance.PlayAgain();
         }
     }

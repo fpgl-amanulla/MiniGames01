@@ -20,6 +20,8 @@ public class TicTacToeUI : MonoBehaviour
     public List<Image> borderImages = new List<Image>();
     public List<Image> imgDirection = new List<Image>();
 
+    private static int gameCount = 0;
+
     private void Awake()
     {
         Instance = this;
@@ -49,7 +51,8 @@ public class TicTacToeUI : MonoBehaviour
     public void PlayAgainCallBack()
     {
         AudioManager.Instance.PlaySFX(AudioManager.audios.btnClick);
-        if (GoogleAdManager.Instance != null) GoogleAdManager.Instance.ShowInterestitialAD();
+        if (gameCount > 0 && (gameCount % 2) == 0)
+            if (GoogleAdManager.Instance != null) GoogleAdManager.Instance.ShowInterestitialAD();
 
         GameManager.Instance.isGameStart = true;
         GameManager.Instance.isGameOver = false;
@@ -59,6 +62,13 @@ public class TicTacToeUI : MonoBehaviour
         TicTacToe.Instance.ResetGame();
         gameOverButtons.SetActive(false);
         BoderAnimation();
+    }
+
+    public void HomeCallBack()
+    {
+        AudioManager.Instance.PlaySFX(AudioManager.audios.btnClick);
+        //if (GoogleAdManager.Instance != null) GoogleAdManager.Instance.ShowInterestitialAD();
+        SceneManager.LoadScene(0);
     }
 
     public void BoderAnimation()
@@ -81,6 +91,7 @@ public class TicTacToeUI : MonoBehaviour
 
     internal void GameOver()
     {
+        gameCount++;
         gameOverButtons.SetActive(true);
         txtTurn.gameObject.SetActive(false);
         txtWinner.gameObject.SetActive(true);

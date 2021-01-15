@@ -8,47 +8,32 @@ using UnityEngine.Events;
 public class GoogleAdManager : MonoBehaviour
 {
 
-    public static GoogleAdManager _instance;
+    public static GoogleAdManager Instance;
     private RewardedAd rewardedAd1;
     public bool userEarnedReward1 = false;
     private InterstitialAd interstitial;
 
     private UnityAction<bool> adViewCallBack;
 
-    public static GoogleAdManager Instance
-    {
-        get
-        {
-            if (_instance == null)
-            {
-                _instance = GameObject.FindObjectOfType<GoogleAdManager>();
-                if (_instance == null)
-                {
-                    GameObject g = new GameObject("GoogleAdManager");
-                    _instance = g.AddComponent<GoogleAdManager>();
-                }
-            }
-            return _instance;
-        }
-    }
-
     private void Awake()
     {
-        if (_instance == null)
+        if (Instance == null)
         {
-            _instance = this;
+            Instance = this;
+        }
+        else
+        {
+            Destroy(this.gameObject);
         }
         DontDestroyOnLoad(this);
-
-        MobileAds.Initialize(initStatus => { });
-
-        CreateAndLoadRewardedAd1();
-        CreateAndLoadInterstitial();
     }
     // Start is called before the first frame update
     void Start()
     {
-        
+        MobileAds.Initialize(initStatus => { });
+
+        CreateAndLoadRewardedAd1();
+        CreateAndLoadInterstitial();
     }
     private void CreateAndLoadInterstitial()
     {
@@ -71,6 +56,7 @@ public class GoogleAdManager : MonoBehaviour
 
     public void HandleOnAdClosedInterstitial(object sender, EventArgs args)
     {
+        interstitial.Destroy();
         CreateAndLoadInterstitial();
     }
 
@@ -90,7 +76,7 @@ public class GoogleAdManager : MonoBehaviour
     public void ShowRewaredAD(UnityAction<bool> _adViewCallBack = null)
     {
         adViewCallBack = _adViewCallBack;
-        if(this.rewardedAd1.IsLoaded())
+        if (this.rewardedAd1.IsLoaded())
         {
             this.rewardedAd1.Show();
         }

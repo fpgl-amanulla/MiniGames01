@@ -72,6 +72,10 @@ namespace RapidRoll
 
             if (other.CompareTag("Dead"))
             {
+                if(AppDelegate.SharedManager().GetVibrationStatus())
+                {
+                    Handheld.Vibrate();
+                }
 
                 if (UIManager.Instance.health <= 1)
                 {
