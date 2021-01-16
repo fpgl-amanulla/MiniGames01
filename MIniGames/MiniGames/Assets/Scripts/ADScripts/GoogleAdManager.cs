@@ -34,7 +34,8 @@ public class GoogleAdManager : MonoBehaviour
     private void CreateAndLoadInterstitial()
     {
 #if UNITY_ANDROID
-        string adUnitId = "ca-app-pub-3940256099942544/1033173712";//Test Ad
+        //string adUnitId = "ca-app-pub-3940256099942544/1033173712";//Test Ad
+        string adUnitId = "ca-app-pub-4466475958175557/4630619771";//Main Ad
 #elif UNITY_IPHONE
         string adUnitId = "ca-app-pub-3940256099942544/4411468910";
 #else
@@ -95,7 +96,8 @@ public class GoogleAdManager : MonoBehaviour
     {
         //key reward
 #if UNITY_ANDROID
-        string rewardedadUnitId1 = "ca-app-pub-3940256099942544/5224354917"; //Test AD
+        //string rewardedadUnitId1 = "ca-app-pub-3940256099942544/5224354917"; //Test AD
+        string rewardedadUnitId1 = "ca-app-pub-4466475958175557/3809967471"; //Main AD
 #elif UNITY_IPHONE
         string rewardedadUnitId1 = "ca-app-pub-3940256099942544/4411468910";
 #else
