@@ -64,7 +64,7 @@ namespace RapidRoll
         public void UpdateGameOverPanel(int score, int bestScore)
         {
             gameOverScoreText.text = "Your Score : " + score.ToString();
-            bestScoreText.text = "Best Score : " + score.ToString();
+            bestScoreText.text = "Best Score : " + bestScore.ToString();
         }
         public void UpDateScore(int score)
         {

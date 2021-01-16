@@ -20,12 +20,8 @@ public class GoogleAdManager : MonoBehaviour
         if (Instance == null)
         {
             Instance = this;
+            DontDestroyOnLoad(this);
         }
-        else
-        {
-            Destroy(this.gameObject);
-        }
-        DontDestroyOnLoad(this);
     }
     // Start is called before the first frame update
     void Start()
@@ -52,6 +48,12 @@ public class GoogleAdManager : MonoBehaviour
         // Load the interstitial with the request.
         this.interstitial.LoadAd(request);
         this.interstitial.OnAdClosed += HandleOnAdClosedInterstitial;
+        this.interstitial.OnAdFailedToLoad += OnLoadAdFailed;
+    }
+
+    private void OnLoadAdFailed(object sender, AdFailedToLoadEventArgs e)
+    {
+        Debug.Log("Failed");
     }
 
     public void HandleOnAdClosedInterstitial(object sender, EventArgs args)

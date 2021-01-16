@@ -16,7 +16,7 @@ namespace RapidRoll
             if (Instance == null)
                 Instance = this;
 
-            bestScore = PlayerPrefs.GetInt("BestScore");
+            bestScore = PlayerPrefs.GetInt("BestScore", 0);
         }
 
         private void Update()
@@ -30,6 +30,7 @@ namespace RapidRoll
                 if (score > bestScore)
                 {
                     bestScore = score;
+                    PlayerPrefs.GetInt("BestScore", bestScore);
                 }
                 UIManager.Instance.UpdateGameOverPanel(score, bestScore);
                 return;
