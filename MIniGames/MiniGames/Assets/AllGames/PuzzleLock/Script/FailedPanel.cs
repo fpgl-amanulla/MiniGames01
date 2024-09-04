@@ -25,10 +25,7 @@ public class FailedPanel : MonoBehaviour
 
     private void Btn_AddPlayCallBack()
     {
-        if (GoogleAdManager.Instance != null)
-        {
-            GoogleAdManager.Instance.ShowRewaredAD(_adViewCallBack);
-        }
+        if (GoogleAdManager.Instance != null) { GoogleAdManager.Instance.ShowRewaredAD(_adViewCallBack); }
     }
 
     private void _adViewCallBack(bool success)
